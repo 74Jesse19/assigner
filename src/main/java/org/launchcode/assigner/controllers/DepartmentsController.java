@@ -23,7 +23,7 @@ public class DepartmentsController {
     public String index(Model model) {
 
         model.addAttribute("departments", departmentsDao.findAll());
-        model.addAttribute("title", "Categories");
+        model.addAttribute("title", "Departments");
         return "departments/index";
     }
 

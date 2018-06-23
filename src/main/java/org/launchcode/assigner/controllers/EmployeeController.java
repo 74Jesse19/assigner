@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "employees")
@@ -29,34 +30,45 @@ public class EmployeeController {
 
     @RequestMapping(value="")
     public String index(Model model){
-        model.addAttribute("Employees", employeesDao.findAll());
+        model.addAttribute("employees", employeesDao.findAll());
         model.addAttribute("title", "Employees" );
         return "employees/index";
     }
 
-    @RequestMapping(value="add", method = RequestMethod.GET)
+    @RequestMapping(value="addEmployees", method = RequestMethod.GET)
     public String displayAddEmployees(Model model){
         model.addAttribute("title", "Add Employee");
         model.addAttribute(new Employees());
         model.addAttribute("departments", departmentsDao.findAll());
-        return "employees/add";
+        return "employees/addEmployees";
     }
 
-    @RequestMapping(value="add", method = RequestMethod.POST)
+    @RequestMapping(value="addEmployees", method = RequestMethod.POST)
     public String processAddEmployees(@ModelAttribute @Valid Employees newEmployee,
                                    Errors errors, @RequestParam int departmentsId, Model model){
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Employee");
             model.addAttribute(new Employees());
             model.addAttribute("departments", departmentsDao.findAll());
-            return "employees/add";
+            return "employees/addEmployees";
         }
-        Departments dep = departmentsDao.findOne(departmentsId);
+        Departments dep = departmentsDao.findById(departmentsId).orElse(null);
         newEmployee.setDepartment(dep);
         employeesDao.save(newEmployee);
         return "redirect:";
-
-
     }
+
+    @RequestMapping(value = "departments", method = RequestMethod.GET)
+    public String category(Model model, @RequestParam int id){
+
+        Departments dep = departmentsDao.findById(id).orElse(null);
+        List<Employees> employees = dep.getEmployees();
+        model.addAttribute("employees", employees);
+        model.addAttribute("title", "Employees in Department: " + dep.getName());
+        return "employees/index";
+    }
+
+
+
 
 }

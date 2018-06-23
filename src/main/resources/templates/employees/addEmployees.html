@@ -14,8 +14,8 @@
     </div>
 
 
-    <label th:for="type">Type</label>
-    <select name="departmentId">
+    <label th:for="departments">Department</label>
+    <select name="departmentsId">
         <option th:each="dep : ${departments}"
                 th:text="${dep.name}"
                 th:value="${dep.id}"></option>
