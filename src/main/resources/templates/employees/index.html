@@ -6,7 +6,9 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<nav th:replace="fragments :: navigation">
+
+</nav>
 
 <p th:unless="${employees} and ${employees.size()}">No Employees :(</p>
 
@@ -26,6 +28,6 @@
 
 </table>
 
-<a href="/employees/addEmployees">Add Employee</a>
+
 </body>
 </html></html>

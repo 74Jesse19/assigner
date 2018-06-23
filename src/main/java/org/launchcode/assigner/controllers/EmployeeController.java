@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -58,12 +56,13 @@ public class EmployeeController {
         return "redirect:";
     }
 
-    @RequestMapping(value = "departments", method = RequestMethod.GET)
-    public String category(Model model, @RequestParam int id){
+    @RequestMapping(value = "departments/{id}", method = RequestMethod.GET)
+    public String departments(Model model, @PathVariable int id){
 
         Departments dep = departmentsDao.findById(id).orElse(null);
         List<Employees> employees = dep.getEmployees();
         model.addAttribute("employees", employees);
+        model.addAttribute("id", dep.getId());
         model.addAttribute("title", "Employees in Department: " + dep.getName());
         return "employees/index";
     }

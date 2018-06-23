@@ -2,6 +2,7 @@ package org.launchcode.assigner.controllers;
 
 import org.launchcode.assigner.models.Departments;
 import org.launchcode.assigner.models.data.DepartmentsDao;
+import org.launchcode.assigner.models.data.EmployeesDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ import javax.validation.Valid;
 public class DepartmentsController {
     @Autowired
     private DepartmentsDao departmentsDao;
+
+    @Autowired
+    private EmployeesDao employeesDao;
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
