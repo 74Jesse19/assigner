@@ -9,7 +9,7 @@
 <form method="post" style="max-width:600px;" th:object="${fileAssigner}">
 
 
-    <label th:for="departments">Department</label>
+    <label th:for="departments">Select Department</label>
 
     <div class="form-group">
     <select name="departmentsId">
@@ -17,15 +17,16 @@
                 th:text="${dep.name}"
                 th:value="${dep.id}"></option>
     </select>
-        <input type="submit" value="Find Next Employee" />
+
     </div>
 
 
 
-    <div class="form-group">
+    <div class="form-group" th:each="emp : ${employees} th:if="${files}">
         <label th:for="fileNumber">File Number</label>
-        <input class="form-control" th:field="*{fileNumber}" />
-        <input type="submit" value="Assign File" />
+        <input class="form-control" th:field="*{fileNumber}"
+        />
+        <input type="submit" value="Assign File To Next Employee" />
         <span th:errors="*{fileNumber}" class="error"></span>
 
     </div>

@@ -33,8 +33,15 @@ public class FileAssignerController {
     private EmployeesDao employeesDao;
 
     @RequestMapping(value="")
-    public String index(Model model){
+    public String index(Model model, @PathVariable int departmentsId){
+        Departments dep = departmentsDao.findById(departmentsId).orElse(null);
+//        FileAssigner fileAssigner = fileAssignerDao.findAll();  FIGURE THIS PART OUT
+        List<Employees> employees = dep.getEmployees();
+//        List<FileAssigner> files = fileAssigner.getFileNumber(); AND THIS THEN FIGURE OUT ASSIGN.HTML
+        model.addAttribute("employees", employees);
+        model.addAttribute("id", dep.getId());
         model.addAttribute("files", fileAssignerDao.findAll());
+
         model.addAttribute("title", "Files" );
         return "fileAssigner/index";
     }
@@ -59,6 +66,17 @@ public class FileAssignerController {
     }
 
 
-
+//    @RequestMapping(value = "roundRobinAssignEmp/{id}", method = RequestMethod.GET)
+//    public String departments(Model model, @PathVariable int id){
+//
+//        Departments dep = departmentsDao.findById(id).orElse(null);
+//        List<Employees> employees = dep.getEmployees();
+//        model.addAttribute("employees", employees);
+//        model.addAttribute("id", dep.getId());
+//        model.addAttribute("title", "Employees in Department: " + dep.getName());
+//        return "employees/index";
+//    }
+// use the code above and try to do the loop in the view using thymeleaf and return a new template with the employee selected
+//    also try to combine the get employee and assign file on the same button
 
 }

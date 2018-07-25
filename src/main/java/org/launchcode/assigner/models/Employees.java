@@ -1,12 +1,11 @@
 package org.launchcode.assigner.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employees {
@@ -25,6 +24,16 @@ public class Employees {
 
     @ManyToOne
     private Departments departments;
+
+    public List<FileAssigner> getFiles() {
+        return files;
+    }
+
+
+
+    @OneToMany
+    @JoinColumn(name="file_assigner_id")
+    private List<FileAssigner> files = new ArrayList<>();
 
     public Employees(String name){
         this.name = name;
