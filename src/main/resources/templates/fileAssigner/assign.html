@@ -22,10 +22,16 @@
 
 
 
-    <div class="form-group" th:each="emp : ${employees} th:if="${files}">
-        <label th:for="fileNumber">File Number</label>
-        <input class="form-control" th:field="*{fileNumber}"
-        />
+    <div class="form-group"
+         th:each="emp, iStat : ${employees}"
+         th:if="iStat.size <= iStat.index+1
+
+         th:text="emp.name>
+
+
+
+        <label th:for="fileNumber> File Number </label>
+        <input class="form-control th:field="*{fileNumber}"/>
         <input type="submit" value="Assign File To Next Employee" />
         <span th:errors="*{fileNumber}" class="error"></span>
 

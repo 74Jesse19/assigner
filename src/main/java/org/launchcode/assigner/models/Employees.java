@@ -25,14 +25,10 @@ public class Employees {
     @ManyToOne
     private Departments departments;
 
-    public List<FileAssigner> getFiles() {
-        return files;
-    }
-
 
 
     @OneToMany
-    @JoinColumn(name="file_assigner_id")
+    @JoinColumn(name="employees_id")
     private List<FileAssigner> files = new ArrayList<>();
 
     public Employees(String name){
@@ -59,5 +55,13 @@ public class Employees {
 
     public void setDepartment(Departments departments) {
         this.departments = departments;
+    }
+
+    public List<FileAssigner> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<FileAssigner> files) {
+        this.files = files;
     }
 }

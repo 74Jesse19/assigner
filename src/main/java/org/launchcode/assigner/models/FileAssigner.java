@@ -14,13 +14,13 @@ public class FileAssigner {
     private int id;
 
 
-    public List<Departments> getDepartments() {
-        return departments;
-    }
+//    public List<Departments> getDepartments() {
+//        return departments;
+//    }
 
-    public void setDepartments(List<Departments> departments) {
-        this.departments = departments;
-    }
+//    public void setDepartments(List<Departments> departments) {
+//        this.departments = departments;
+//    }
 
     @NotNull
     @Size(min=3, max=15)
@@ -28,17 +28,18 @@ public class FileAssigner {
 
     private Date date = new Date();
 
-    @ManyToMany
-    private List<Departments> departments;
+//    @ManyToMany
+//    private List<Departments> departments;
 
-    @ManyToMany
-    private List<Employees> employees;
+    @ManyToOne
+//    private List<Employees> employees;
+    private Employees employees;
 
     public FileAssigner(){}
 
-    public void addItem(Departments item){
-        departments.add(item);
-    }
+//    public void addItem(Departments item){
+//        departments.add(item);
+//    }
 
     public int getId() {
         return id;

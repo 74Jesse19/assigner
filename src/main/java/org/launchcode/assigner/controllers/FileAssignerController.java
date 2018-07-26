@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.nio.file.Files;
 import java.util.List;
 
 @Controller
@@ -33,15 +34,14 @@ public class FileAssignerController {
     private EmployeesDao employeesDao;
 
     @RequestMapping(value="")
-    public String index(Model model, @PathVariable int departmentsId){
+    public String index(Model model, @PathVariable int departmentsId, @PathVariable int employeesId){
         Departments dep = departmentsDao.findById(departmentsId).orElse(null);
-//        FileAssigner fileAssigner = fileAssignerDao.findAll();  FIGURE THIS PART OUT
+        Employees emp = employeesDao.findById(employeesId).orElse(null);
         List<Employees> employees = dep.getEmployees();
-//        List<FileAssigner> files = fileAssigner.getFileNumber(); AND THIS THEN FIGURE OUT ASSIGN.HTML
+        List<FileAssigner> files = emp.getFiles();
         model.addAttribute("employees", employees);
         model.addAttribute("id", dep.getId());
         model.addAttribute("files", fileAssignerDao.findAll());
-
         model.addAttribute("title", "Files" );
         return "fileAssigner/index";
     }
