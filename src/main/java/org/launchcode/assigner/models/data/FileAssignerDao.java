@@ -10,4 +10,6 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface FileAssignerDao extends CrudRepository<FileAssigner, Integer> {
+
+
 }

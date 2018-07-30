@@ -14,19 +14,12 @@ public class FileAssigner {
     private int id;
 
 
-//    public List<Departments> getDepartments() {
-//        return departments;
-//    }
-
-//    public void setDepartments(List<Departments> departments) {
-//        this.departments = departments;
-//    }
-
     @NotNull
     @Size(min=3, max=15)
     private String fileNumber;
 
     private Date date = new Date();
+
 
 //    @ManyToMany
 //    private List<Departments> departments;

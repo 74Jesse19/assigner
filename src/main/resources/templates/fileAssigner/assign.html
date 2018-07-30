@@ -12,7 +12,7 @@
     <label th:for="departments">Select Department</label>
 
     <div class="form-group">
-    <select name="departmentsId">
+    <select name="depId">
         <option th:each="dep : ${departments}"
                 th:text="${dep.name}"
                 th:value="${dep.id}"></option>
@@ -21,22 +21,16 @@
     </div>
 
 
-
-    <div class="form-group"
-         th:each="emp, iStat : ${employees}"
-         th:if="iStat.size <= iStat.index+1
-
-         th:text="emp.name>
-
-
-
-        <label th:for="fileNumber> File Number </label>
-        <input class="form-control th:field="*{fileNumber}"/>
+        <label th:for="fileNumber"> File Number </label>
+        <input class="form-control" th:field="*{fileNumber}"/>
+         <input th:each="emp : ${employees}" th:text="${emp.name}" />
         <input type="submit" value="Assign File To Next Employee" />
+
+
+
         <span th:errors="*{fileNumber}" class="error"></span>
 
-    </div>
-</form>
 
+</form>
 </body>
 </html>

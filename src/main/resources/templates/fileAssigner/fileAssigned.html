@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" th:object="${fileAssigner}">
+
+
+<div>
+
+    <p th:text="${emp} + ' Has been assigned to this file'"></p>
+
+</div>
+
+
+
+
+
+</form>
+</body>
+</html>
