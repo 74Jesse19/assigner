@@ -21,21 +21,12 @@ public class FileAssigner {
     private Date date = new Date();
 
 
-
-    private int itemIndex;
-
-//    @ManyToMany
-//    private List<Departments> departments;
-
     @ManyToOne
-//    private List<Employees> employees;
+
     private Employees employees;
 
     public FileAssigner(){}
 
-//    public void addItem(Departments item){
-//        departments.add(item);
-//    }
 
     public int getId() {
         return id;
@@ -53,11 +44,5 @@ public class FileAssigner {
         return date;
     }
 
-    public int getItemIndex() {
-        return itemIndex;
-    }
 
-    public void setItemIndex(int itemIndex) {
-        this.itemIndex = itemIndex;
-    }
 }

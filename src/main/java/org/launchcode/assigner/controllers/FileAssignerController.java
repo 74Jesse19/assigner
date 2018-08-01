@@ -4,7 +4,6 @@ package org.launchcode.assigner.controllers;
 import org.launchcode.assigner.models.Departments;
 import org.launchcode.assigner.models.Employees;
 import org.launchcode.assigner.models.FileAssigner;
-import org.launchcode.assigner.models.GetNextItem;
 import org.launchcode.assigner.models.data.EmployeesDao;
 import org.launchcode.assigner.models.data.FileAssignerDao;
 import org.launchcode.assigner.models.data.DepartmentsDao;
@@ -59,15 +58,16 @@ public class FileAssignerController {
         String emp = new String();
 
 
-        emp = employees.get(fa.getItemIndex()).getName();
-        int counter = (fa.getItemIndex());
-        fa.setItemIndex(counter++);
+        emp = employees.get(dep.getItemIndex()).getName();
+        int counter = (dep.getItemIndex());
+        dep.setItemIndex(counter++);
 
 
-        if ((fa.getItemIndex()) >= employees.size()) {
-            fa.setItemIndex(0);
+        if ((dep.getItemIndex())== employees.size()) {
 
-        } fa.setItemIndex(counter++);
+            dep.setItemIndex(counter - employees.size());
+
+        } dep.setItemIndex(counter++);
 
         model.addAttribute("employees", employees);
         model.addAttribute("emp", emp);

@@ -25,6 +25,9 @@ public class Departments {
     private List<Employees> employees = new ArrayList<>();
 
 
+    private int itemIndex;
+
+
     public Departments () {}
 
 
@@ -49,8 +52,11 @@ public class Departments {
         return employees;
     }
 
+    public int getItemIndex() {
+        return itemIndex;
+    }
 
-
-
-
+    public void setItemIndex(int itemIndex) {
+        this.itemIndex = itemIndex;
+    }
 }
