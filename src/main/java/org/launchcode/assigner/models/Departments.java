@@ -24,6 +24,7 @@ public class Departments {
     @JoinColumn(name="departments_id")
     private List<Employees> employees = new ArrayList<>();
 
+
     public Departments () {}
 
 

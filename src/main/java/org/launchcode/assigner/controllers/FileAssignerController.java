@@ -52,22 +52,27 @@ public class FileAssignerController {
             return "fileAssigner/assign";
         }
         Departments dep = departmentsDao.findById(depId).orElse(null);
+        FileAssigner fa = new FileAssigner();
 
-//        List<Employees> employees = dep.getEmployees();
+        List<Employees> employees = dep.getEmployees();
 
-        GetNextItem getNextItem = GetNextItem(dep.getEmployees());
         String emp = new String();
-//        int itemIndex = 0;
-//            itemIndex++;
-//
-//        if (itemIndex >= employees.size()) {
-//            itemIndex = 0;
-//
-//        } emp = employees.get(itemIndex).getName();
+
+
+        emp = employees.get(fa.getItemIndex()).getName();
+        int counter = (fa.getItemIndex());
+        fa.setItemIndex(counter++);
+
+
+        if ((fa.getItemIndex()) >= employees.size()) {
+            fa.setItemIndex(0);
+
+        } fa.setItemIndex(counter++);
 
         model.addAttribute("employees", employees);
         model.addAttribute("emp", emp);
-
+        model.addAttribute("fa", fa);
+        fileAssignerDao.save(fileAssigner);
         return "fileAssigner/fileAssigned";
     }
 

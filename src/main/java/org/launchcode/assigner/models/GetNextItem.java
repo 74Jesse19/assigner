@@ -4,7 +4,7 @@ import java.util.List;
 
 public class GetNextItem {
 
-    private static int itemIndex;
+    private int itemIndex;
 
     private List<String> itemList;
 
