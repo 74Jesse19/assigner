@@ -55,19 +55,15 @@ public class FileAssignerController {
 
         List<Employees> employees = dep.getEmployees();
 
+
         String emp = new String();
 
+        if (dep.getItemIndex() == (employees.size())) {
+            dep.setItemIndex(0);
 
-        emp = employees.get(dep.getItemIndex()).getName();
-        int counter = (dep.getItemIndex());
+        }emp = employees.get(dep.getItemIndex()).getName();
+        int counter = (dep.getItemIndex()+1);
         dep.setItemIndex(counter++);
-
-
-        if ((dep.getItemIndex())== employees.size()) {
-
-            dep.setItemIndex(counter - employees.size());
-
-        } dep.setItemIndex(counter++);
 
         model.addAttribute("employees", employees);
         model.addAttribute("emp", emp);
