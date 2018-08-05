@@ -9,9 +9,24 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <ul>
-    <li th:each="file : ${files}">
-        <a th:href="'/file/view/' + ${file.id}" th:text="${file.fileNumber}"></a>
-    </li>
+
+
+    <table class="table">
+
+        <tr>
+            <th>File number</th>
+            <th>Date Assigned</th>
+
+
+        </tr>
+
+        <tr th:each="file : ${files}">
+            <td th:text="${file.fileNumber}"></td>
+            <td th:text="${file.date}"></td>
+
+        </tr>
+
+    </table>
 </ul>
 
 <p><a href="/fileAssigner/assign">Assign File</a></p>

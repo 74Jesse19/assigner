@@ -10,16 +10,24 @@
 </head>
 <body>
 
-<nav th:fragment="navigation">
 
-    <a class="btn btn-default" href="/employees/addEmployees" role="button">Add Employee</a>
-    <a class="btn btn-default" href="/departments/add" role="button">Add Department</a>
-    <a id="navRight" class="btn btn-default" href="/fileAssigner/assign" role="button">Assign Files</a>
+    <div th:fragment="navigation">
 
-    <a href="/employees"> List Employees</a> |
-    <a href="/departments">List Departments</a> |
-    <a href="/fileAssigner">List Files</a>
-</nav>
+
+
+            <nav>
+                <a class="btn btn-default" href="/employees/addEmployees" role="button">Add Employee</a>
+                <a class="btn btn-default" href="/departments/add" role="button">Add Department</a>
+                <a id="navRight" class="btn btn-default" href="/fileAssigner/assign" role="button">Assign Files</a>
+
+                <a href="/employees"> List Employees</a> |
+                <a href="/departments">List Departments</a> |
+                <a href="/fileAssigner">List Files</a>
+
+            </nav>
+
+
+    </div>
 
 </body>
 </html>

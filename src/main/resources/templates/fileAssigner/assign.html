@@ -23,7 +23,7 @@
 
         <label th:for="fileNumber"> File Number </label>
         <input class="form-control" th:field="*{fileNumber}"/>
-         <input th:each="emp : ${employees}" th:text="${emp.name}" />
+
         <input type="submit" value="Assign File To Next Employee" />
 
 

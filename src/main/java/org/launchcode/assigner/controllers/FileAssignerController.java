@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
+
 @Controller
 @RequestMapping(value="fileAssigner")
 public class FileAssignerController {
@@ -62,12 +64,15 @@ public class FileAssignerController {
             dep.setItemIndex(0);
 
         }emp = employees.get(dep.getItemIndex()).getName();
+        int empId = employees.get(dep.getItemIndex()).getId();
+
         int counter = (dep.getItemIndex()+1);
         dep.setItemIndex(counter++);
 
         model.addAttribute("employees", employees);
         model.addAttribute("emp", emp);
-        model.addAttribute("fa", fa);
+        model.addAttribute("empId", empId);
+
         fileAssignerDao.save(fileAssigner);
         return "fileAssigner/fileAssigned";
     }
