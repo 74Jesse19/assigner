@@ -20,14 +20,23 @@
                 <a class="btn btn-default" href="/departments/add" role="button">Add Department</a>
                 <a id="navRight" class="btn btn-default" href="/fileAssigner/assign" role="button">Assign Files</a>
 
+
+
                 <a href="/employees"> List Employees</a> |
                 <a href="/departments">List Departments</a> |
-                <a href="/fileAssigner">List Files</a>
+                <a href="/fileAssigner">List Files</a>|
+                <a href="/logout">Logout</a>
+
 
             </nav>
 
-
     </div>
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-default" name="registration"
+                type="Submit">Logout</button>
+    </form>
+
 
 </body>
 </html>
