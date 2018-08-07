@@ -25,6 +25,7 @@ public class FileAssigner {
     @ManyToOne
     private Employees employees;
 
+
     public FileAssigner(){}
 
 
@@ -42,6 +43,14 @@ public class FileAssigner {
 
     public Date getDate() {
         return date;
+    }
+
+    public Employees getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
 

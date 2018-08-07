@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +33,10 @@ public class FileAssignerController {
 
     @RequestMapping(value="")
     public String index(Model model){
+//        String employee = fileAssignerDao.findById(getId);
         model.addAttribute("files", fileAssignerDao.findAll());
+//        model.addAttribute("employees", );
+//        model.addAttribute("departments", departmentsDao.findAll());
         model.addAttribute("title", "Files" );
         return "fileAssigner/index";
     }
@@ -53,7 +57,6 @@ public class FileAssignerController {
             return "fileAssigner/assign";
         }
         Departments dep = departmentsDao.findById(depId).orElse(null);
-        FileAssigner fa = new FileAssigner();
 
         List<Employees> employees = dep.getEmployees();
 
@@ -72,7 +75,8 @@ public class FileAssignerController {
         model.addAttribute("employees", employees);
         model.addAttribute("emp", emp);
         model.addAttribute("empId", empId);
-
+        Employees empInfo = employeesDao.findById(empId).orElse(null);
+        fileAssigner.setEmployees(empInfo);
         fileAssignerDao.save(fileAssigner);
         return "fileAssigner/fileAssigned";
     }

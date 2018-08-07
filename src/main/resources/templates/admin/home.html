@@ -23,16 +23,9 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <span th:utext="${userName}"></span>
-        </div>
-
-        <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
-    </div>
 
 
-    <form th:action="@{/logout}" method="get">
-        <button class="btn btn-default" name="registration"
-                type="Submit">Logout</button>
-    </form>
+
 </div>
 
 </body>

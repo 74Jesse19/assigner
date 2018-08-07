@@ -29,7 +29,7 @@ public class Employees {
 
     @OneToMany
     @JoinColumn(name="employees_id")
-    private List<FileAssigner> files = new ArrayList<>();
+    private List<FileAssigner> fileAssigner = new ArrayList<>();
 
     public Employees(String name){
         this.name = name;
@@ -58,10 +58,10 @@ public class Employees {
     }
 
     public List<FileAssigner> getFiles() {
-        return files;
+        return fileAssigner;
     }
 
     public void setFiles(List<FileAssigner> files) {
-        this.files = files;
+        this.fileAssigner = files;
     }
 }
