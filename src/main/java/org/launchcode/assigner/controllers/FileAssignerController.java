@@ -8,6 +8,7 @@ import org.launchcode.assigner.models.data.EmployeesDao;
 import org.launchcode.assigner.models.data.FileAssignerDao;
 import org.launchcode.assigner.models.data.DepartmentsDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -33,16 +34,17 @@ public class FileAssignerController {
 
     @RequestMapping(value="")
     public String index(Model model){
-//        String employee = fileAssignerDao.findById(getId);
+        Employees employees = new Employees();
+        FileAssigner fileAssigner = new FileAssigner();
+//
         model.addAttribute("files", fileAssignerDao.findAll());
-//        model.addAttribute("employees", );
-//        model.addAttribute("departments", departmentsDao.findAll());
+//        model.addAttribute("emp", fileAssigner.getFileNumber());
         model.addAttribute("title", "Files" );
         return "fileAssigner/index";
     }
 
     @RequestMapping(value="assign", method=RequestMethod.GET)
-    public String add(Model model){
+    public String assignFile(Model model){
         model.addAttribute("title", "Assign Files");
         model.addAttribute("departments", departmentsDao.findAll());
         model.addAttribute(new FileAssigner());
@@ -50,7 +52,7 @@ public class FileAssignerController {
     }
 
     @RequestMapping(value="assign", method=RequestMethod.POST)
-    public String add(@RequestParam int depId, Model model,@ModelAttribute @Valid FileAssigner fileAssigner, Errors errors) {
+    public String assignFile(@RequestParam int depId, Model model,@ModelAttribute @Valid FileAssigner fileAssigner, Errors errors) {
         if (errors.hasErrors()) {
 
             model.addAttribute("title", "Assign Files");

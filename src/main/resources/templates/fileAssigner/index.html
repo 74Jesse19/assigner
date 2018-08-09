@@ -16,7 +16,7 @@
         <tr>
             <th>File number</th>
             <th>Date Assigned</th>
-            <th>Employee</th>
+            <th>Employee Assigned</th>
 
 
         </tr>
@@ -24,7 +24,7 @@
         <tr th:each="file : ${files}">
             <td th:text="${file.fileNumber}"></td>
             <td th:text="${file.date}"></td>
-            <!--<td th:text="${file.employeesId}"></td>-->
+            <td th:text="${file.employees.name}"></td>
 
         </tr>
 
